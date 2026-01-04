@@ -7,7 +7,7 @@ async function updateEmbeds(client) {
 
     for (const server of trackedServers) {
         try {
-            const serverStatus = null
+            let serverStatus = null
             try {
                 serverStatus = await getServerStatus(server.ip, server.port, server.server_type);
             } catch (error) {}
