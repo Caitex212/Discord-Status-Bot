@@ -1,5 +1,23 @@
 module.exports = async (serverStatus, ip, port, serverType) => {
-    if (!serverStatus) return null;
+    // Offline / no response
+    if (!serverStatus) {
+        return {
+            title: `🔴 Server Offline`,
+            description: `**Server is offline or not responding**`,
+            color: 0xE74C3C,
+            fields: [
+                {
+                    name: '🌐 Address',
+                    value: `${ip}:${port}`,
+                    inline: false
+                }
+            ],
+            footer: {
+                text: 'Last checked'
+            },
+            timestamp: new Date()
+        };
+    }
 
     if (serverType === 'ase') {
         try {

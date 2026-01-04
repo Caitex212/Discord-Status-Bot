@@ -7,7 +7,10 @@ async function updateEmbeds(client) {
 
     for (const server of trackedServers) {
         try {
-            const serverStatus = await getServerStatus(server.ip, server.port, server.server_type);
+            const serverStatus = null
+            try {
+                serverStatus = await getServerStatus(server.ip, server.port, server.server_type);
+            } catch (error) {}
             const channel = await client.channels.fetch(server.channel_id)
             const message = await channel.messages.fetch(server.message_id);
             if (!message) {
