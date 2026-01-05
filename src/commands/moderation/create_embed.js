@@ -1,4 +1,4 @@
-const {  PermissionsBitField, MessageFlags } = require('discord.js');
+const {  PermissionsBitField, MessageFlags, ApplicationCommandOptionType } = require('discord.js');
 const { getServerStatus } = require('../../services/serverQuery');
 const createEmbed = require('../../utils/createEmbed');
 const db = require('../../utils/db');
@@ -9,17 +9,42 @@ module.exports =  {
     deleted: false,
     permissionsRequired: [PermissionsBitField.Flags.Administrator],
     botPermissions: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.ManageMessages],
+    options: [
+        {
+            name: 'ip',
+            description: 'The IP address of the server.',
+            required: true,
+            type: ApplicationCommandOptionType.String
+        },
+        {
+            name: 'port',
+            description: 'The port of the server.',
+            required: true,
+            type: ApplicationCommandOptionType.Integer
+        },
+        {
+            name: 'type',
+            description: 'The game type the server is running.',
+            required: true,
+            type: ApplicationCommandOptionType.String,
+            choices: [
+                { name: 'ARK: Survival Evolved', value: 'ase' }
+            ]
+        }
+    ],
 
     callback: async (client, interaction) => {
+        const ip = interaction.options.getString('ip');
+        const port = interaction.options.getInteger('port');
+        const type = interaction.options.getString('type');
+
         const supportedServers = process.env.SUPPORTED_SERVERS ? process.env.SUPPORTED_SERVERS.split(',') : [];
-        if (!supportedServers.includes(process.env.GSERVER_TYPE)) {
-            interaction.reply({content: `Server type ${process.env.GSERVER_TYPE} is not supported yet.` , flags: [MessageFlags.Ephemeral]});
+        if (!supportedServers.includes(type)) {
+            interaction.reply({content: `Server type ${type} is not supported yet.` , flags: [MessageFlags.Ephemeral]});
             return;
         }
 
         await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
-
-        const { GSERVER_IP: ip, GSERVER_PORT: port, GSERVER_TYPE: type } = process.env;
 
         let serverStatus = null;
         try {
