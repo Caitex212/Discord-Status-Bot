@@ -30,8 +30,8 @@ A **Node.js Discord bot** for displaying live **game server status embeds** usin
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/yourusername/ark-status-bot.git
-cd ark-status-bot
+git clone https://github.com/Caitex212/Echo_Discord-Status-Bot.git
+cd Echo_Discord-Status-Bot
 npm install
 ```
 
