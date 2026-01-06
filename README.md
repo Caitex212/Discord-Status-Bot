@@ -1,4 +1,4 @@
-# Discord Status Bot
+# Echo: Discord Game Server Status Bot
 
 A **Node.js Discord bot** for displaying live **game server status embeds** using **GameDig**.
 
