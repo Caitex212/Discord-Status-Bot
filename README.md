@@ -68,7 +68,7 @@ SERVER_STATUS_UPDATE_INTERVAL=5
 ## ▶️ Running the Bot
 
 ```bash
-node src/index.js
+node .
 ```
 
 ---
