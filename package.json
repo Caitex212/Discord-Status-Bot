@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Caitex212",
-  "license": "LGPL-2.1",
+  "license": "MIT",
   "dependencies": {
     "better-sqlite3": "^12.5.0",
     "discord.js": "^14.25.1",
