@@ -10,18 +10,6 @@ A **Node.js Discord bot** for displaying live **game server status embeds** usin
 
 ---
 
-## 📚 Table of Contents
-
-* [Features](#-features)
-* [Requirements](#-requirements)
-* [Installation](#-installation)
-* [Configuration](#-configuration)
-* [Running the Bot](#-running-the-bot)
-* [Commands](#-commands)
-* [Notes](#-notes)
-
----
-
 ## ✨ Features
 
 * Query **any GameDig-supported server**
